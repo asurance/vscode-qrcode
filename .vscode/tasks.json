@@ -1,0 +1,57 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "npm",
+            "script": "build:dev",
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "type": "npm",
+            "script": "build:prod",
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "type": "npm",
+            "script": "build_main:dev",
+            "group": "build",
+            "problemMatcher": [],
+            "label": "npm: build_main:dev",
+            "detail": "cross-env TS_NODE_PROJECT=\"config/tsconfig.json\" webpack --config config/webpack.dev.config.ts"
+        },
+        {
+            "type": "npm",
+            "script": "build_main:prod",
+            "group": "build",
+            "problemMatcher": [],
+            "label": "npm: build_main:prod",
+            "detail": "cross-env TS_NODE_PROJECT=\"config/tsconfig.json\" webpack --config config/webpack.prod.config.ts"
+        },
+        {
+            "type": "npm",
+            "script": "build_webview:dev",
+            "group": "build",
+            "problemMatcher": [],
+            "label": "npm: build_webview:dev",
+            "detail": "cross-env TS_NODE_PROJECT=\"webview/config/tsconfig.json\" webpack --config webview/config/webpack.dev.config.ts"
+        },
+        {
+            "type": "npm",
+            "script": "build_webview:prod",
+            "group": "build",
+            "problemMatcher": [],
+            "label": "npm: build_webview:prod",
+            "detail": "cross-env TS_NODE_PROJECT=\"webview/config/tsconfig.json\" webpack --config webview/config/webpack.prod.config.ts"
+        },
+        {
+            "type": "npm",
+            "script": "start_webview:dev",
+            "label": "npm: start_webview:dev",
+            "detail": "cross-env TS_NODE_PROJECT=\"webview/config/tsconfig.json\" webpack-dev-server --config webview/config/webpack.dev.config.ts",
+            "isBackground": true,
+            "problemMatcher": []
+        }
+    ]
+}
