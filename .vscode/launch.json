@@ -22,7 +22,14 @@
             "request": "launch",
             "url": "http://localhost:8080",
             "webRoot": "${workspaceFolder}/public",
-            "breakOnLoad": true
+            "internalConsoleOptions": "openOnSessionStart",
+            "sourceMapPathOverrides": {
+                "webpack:///./*": "${webRoot}/*",
+                "webpack:///src/*": "${webRoot}/*",
+                "webpack:///*": "*",
+                "webpack:///./~/*": "${webRoot}/node_modules/*",
+                "meteor://💻app/*": "${webRoot}/*"
+            }
         },
         {
             "name": "Debug All",

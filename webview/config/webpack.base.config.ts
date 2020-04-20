@@ -23,7 +23,7 @@ const config = {
         ]
     },
     plugins: [
-        new HtmlWebpackPlugin({ title: 'vscode qrcode' })
+        new HtmlWebpackPlugin({ title: 'vscode qrcode', template: resolve(__dirname, '../index.html') })
     ],
     resolve: {
         extensions: ['.ts', '.js']
