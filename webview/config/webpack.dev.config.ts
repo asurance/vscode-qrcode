@@ -7,10 +7,11 @@ const config = {
     mode: 'development',
     devtool: 'source-map',
     devServer: {
+        open: true,
         port: 8080,
         quiet: true,
     },
-    plugins:[
+    plugins: [
         new FriendlyErrorsWebpackPlugin()
     ]
 } as Configuration

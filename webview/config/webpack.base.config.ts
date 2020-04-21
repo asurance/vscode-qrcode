@@ -31,7 +31,6 @@ const config = {
     output: {
         filename: '[name].js',
         path: resolve(__dirname, '../../public'),
-        devtoolModuleFilenameTemplate: '../[resource-path]'
     }
 } as Configuration
 

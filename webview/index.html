@@ -1,9 +1,37 @@
 <head>
 
 </head>
+<style>
+    html {
+        width: 100%;
+        height: 100%;
+    }
+
+    body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+    }
+
+    #textInput {
+        color: #d8dee9;
+        background-color: #2e3440;
+        font-family: SFMono-Regular, Consolas, DejaVu Sans Mono, Ubuntu Mono, Liberation Mono, Menlo, Courier, monospace;
+        width: 60%;
+        height: 30%;
+        resize: none;
+    }
+
+    #empty {
+        height: 20px;
+    }
+</style>
 
 <body>
-    <textarea id="textInput" placeholder="二维码文本"></textarea>
     <canvas id="canvas"></canvas>
-    <button id="submit">生成</button>
+    <div id="empty"></div>
+    <textarea id="textInput" placeholder="Welcome to Vscode QRCode"></textarea>
 </body>

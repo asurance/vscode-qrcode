@@ -3,8 +3,6 @@ import { resolve } from 'path'
 import { readFile } from 'fs'
 import type { } from 'vscode'
 
-
-
 async function GetWebviewContent(context: ExtensionContext): Promise<string> {
     const publicPath = resolve(context.extensionPath, 'public')
     const htmlPath = resolve(publicPath, 'index.html')
@@ -23,12 +21,12 @@ async function GetWebviewContent(context: ExtensionContext): Promise<string> {
 export function activate(context: ExtensionContext): void {
     context.subscriptions.push(commands.registerCommand('vscodeQRCode.preview', async () => {
         const panel = window.createWebviewPanel(
-            'testWebview',
+            'QRCodePreview',
             'WebView演示',
             ViewColumn.One,
             {
                 enableScripts: true,
-                // localResourceRoots: [Uri.file(resolve(context.extensionPath, 'public'))]
+                localResourceRoots: [Uri.file(resolve(context.extensionPath, 'public'))]
             }
         )
         const html = await GetWebviewContent(context)
