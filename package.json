@@ -1,7 +1,7 @@
 {
     "name": "vscode-qrcode",
-    "version": "0.0.1",
-    "description": "qrcode preview",
+    "version": "1.0.0",
+    "description": "qrcode preview for vscode",
     "publisher": "asurance",
     "main": "./dist/extension.js",
     "scripts": {
@@ -14,6 +14,10 @@
         "build:dev": "npm run build_main:dev && npm run build_webview:dev",
         "build:prod": "npm run build_main:prod && npm run build_webview:prod"
     },
+    "keywords": [
+        "qrcode"
+    ],
+    "displayName": "QRCode",
     "engines": {
         "vscode": "^1.44.0"
     },
@@ -36,7 +40,8 @@
         "type": "git",
         "url": "https://github.com/asurance/vscode-qrcode.git"
     },
-    "license": "MIT",
+    "icon": "icon.png",
+    "license": "SEE LICENSE IN LICENSE",
     "bugs": {
         "url": "https://github.com/asurance/vscode-qrcode/issues"
     },
