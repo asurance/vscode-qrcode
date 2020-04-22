@@ -1,7 +1,7 @@
-import { ExtensionContext, commands, window, ViewColumn, Uri } from 'vscode'
+import { commands, window, ViewColumn, Uri } from 'vscode'
 import { resolve } from 'path'
 import { readFile } from 'fs'
-import type { } from 'vscode'
+import type { ExtensionContext, WebviewPanel } from 'vscode'
 
 async function GetWebviewContent(context: ExtensionContext): Promise<string> {
     const publicPath = resolve(context.extensionPath, 'public')
@@ -19,17 +19,33 @@ async function GetWebviewContent(context: ExtensionContext): Promise<string> {
 }
 
 export function activate(context: ExtensionContext): void {
+    let panel: WebviewPanel | null = null
     context.subscriptions.push(commands.registerCommand('vscodeQRCode.preview', async () => {
-        const panel = window.createWebviewPanel(
-            'QRCodePreview',
-            'WebView演示',
-            ViewColumn.One,
-            {
-                enableScripts: true,
-                localResourceRoots: [Uri.file(resolve(context.extensionPath, 'public'))]
+        if (panel) {
+            panel.reveal(ViewColumn.Beside)
+        } else {
+            panel = window.createWebviewPanel(
+                'QRCodePreview',
+                '预览二维码',
+                ViewColumn.Beside,
+                {
+                    enableScripts: true,
+                    localResourceRoots: [Uri.file(resolve(context.extensionPath, 'public'))]
+                }
+            )
+            const html = await GetWebviewContent(context)
+            panel.webview.html = html
+            panel.onDidDispose(() => {
+                panel = null
+            })
+        }
+        if (window.activeTextEditor) {
+            const selection = window.activeTextEditor.selection
+            if (!selection.isEmpty) {
+                const document = window.activeTextEditor.document
+                const text = document.getText(selection)
+                panel.webview.postMessage({ type: 'update', data: text })
             }
-        )
-        const html = await GetWebviewContent(context)
-        panel.webview.html = html
+        }
     }))
 }

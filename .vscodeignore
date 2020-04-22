@@ -6,3 +6,4 @@ webview/**/*
 .eslintrc.yml
 .gitignore
 .vscodeignore
+task.md
