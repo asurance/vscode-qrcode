@@ -1,6 +1,6 @@
 {
     "name": "vscode-qrcode",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "qrcode preview for vscode",
     "publisher": "asurance",
     "main": "./dist/extension.js",
