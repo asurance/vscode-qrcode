@@ -34,7 +34,15 @@
                 "command": "vscodeQRCode.preview",
                 "category": "QRCode"
             }
-        ]
+        ],
+        "menus": {
+            "editor/context": [
+                {
+                    "command": "vscodeQRCode.preview",
+                    "group": "z_commands"
+                }
+            ]
+        }
     },
     "repository": {
         "type": "git",
