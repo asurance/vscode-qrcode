@@ -6,6 +6,7 @@
         width: 100%;
         height: 100%;
     }
+
     body {
         display: flex;
         flex-direction: column;
@@ -14,6 +15,7 @@
         width: 100%;
         height: 100%;
     }
+
     #textInput {
         color: #d8dee9;
         background-color: #2e3440;
@@ -22,9 +24,11 @@
         height: 30%;
         resize: none;
     }
+
     .empty {
         height: 20px;
     }
+
     #save {
         border-width: 0;
         border-radius: 4px;
@@ -34,11 +38,18 @@
         cursor: pointer;
         font-size: 20px;
         transition: transform 0.2s;
+        outline: none;
     }
 
     #save:hover,
     #save:focus {
         transform: scale(1.1, 1.1);
+    }
+
+    #save:disabled {
+        filter: grayscale(50%);
+        transform: scale(1, 1);
+        cursor: default;
     }
 </style>
 
