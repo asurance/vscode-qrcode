@@ -21,6 +21,12 @@ async function GetWebviewContent(context: ExtensionContext): Promise<string> {
 
 export function activate(context: ExtensionContext): void {
     let panel: WebviewPanel | null = null
+    let webviewContent: string | undefined
+    let webviewContentPromise: Promise<string> | null = GetWebviewContent(context)
+    webviewContentPromise.then((v) => {
+        webviewContent = v
+        webviewContentPromise = null
+    })
     const onSave = async (text: string): Promise<void> => {
         const defaultUri = workspace.workspaceFolders ? workspace.workspaceFolders[0].uri : undefined
         const uri = await window.showSaveDialog({ defaultUri, filters: { png: ['png',], svg: ['svg'] } })
@@ -49,7 +55,7 @@ export function activate(context: ExtensionContext): void {
                     localResourceRoots: [Uri.file(resolve(context.extensionPath, 'public'))]
                 }
             )
-            const html = await GetWebviewContent(context)
+            const html = webviewContentPromise === null ? webviewContent! : await webviewContentPromise
             panel.webview.html = html
             const dispose: Disposable[] = []
             dispose.push(panel.onDidDispose(() => {
