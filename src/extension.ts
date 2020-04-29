@@ -14,7 +14,7 @@ async function GetWebviewContent(context: ExtensionContext): Promise<string> {
             resolve(data)
         }
     }))
-    return htmlContent.replace(/(<script.+?src=")(.+?)"/, (match, $1, $2) => {
+    return htmlContent.replace(/(<script.+?src="|<link.+?href=")(.+?)"/g, (match, $1, $2) => {
         return `${$1}${Uri.file(resolve(publicPath, $2)).with({ scheme: 'vscode-resource' })}"`
     })
 }
@@ -42,13 +42,13 @@ export function activate(context: ExtensionContext): void {
     const inMessageCBMap: { [T in keyof InMessageMap]: InMessageCB<T> } = {
         Save: onSave
     }
-    context.subscriptions.push(commands.registerCommand('vscodeQRCode.preview', async () => {
+    context.subscriptions.push(commands.registerCommand('asurance.vscodeQRCode', async () => {
         if (panel) {
             panel.reveal(ViewColumn.Beside)
         } else {
             panel = window.createWebviewPanel(
-                'QRCodePreview',
-                '预览二维码',
+                'QRCode',
+                '二维码',
                 ViewColumn.Beside,
                 {
                     enableScripts: true,
