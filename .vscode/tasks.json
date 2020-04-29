@@ -44,14 +44,6 @@
             "problemMatcher": [],
             "label": "npm: build_webview:prod",
             "detail": "cross-env TS_NODE_PROJECT=\"webview/config/tsconfig.json\" webpack --config webview/config/webpack.prod.config.ts"
-        },
-        {
-            "type": "npm",
-            "script": "start_webview:dev",
-            "label": "npm: start_webview:dev",
-            "detail": "cross-env TS_NODE_PROJECT=\"webview/config/tsconfig.json\" webpack-dev-server --config webview/config/webpack.dev.config.ts",
-            "isBackground": true,
-            "problemMatcher": []
         }
     ]
 }

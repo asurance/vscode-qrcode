@@ -18,3 +18,4 @@ declare interface VSCode<T> {
     postMessage<K extends keyof OutMessageMap>(message: OutMessage<K>): void;
 }
 declare function acquireVsCodeApi(): VSCode<State>;
+declare module '*.css'

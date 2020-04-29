@@ -1,5 +1,4 @@
 import { resolve } from 'path'
-import { CleanWebpackPlugin } from 'clean-webpack-plugin'
 import type { Configuration } from 'webpack'
 
 const config = {
@@ -26,9 +25,6 @@ const config = {
     externals: {
         vscode: 'commonjs vscode'
     },
-    plugins: [
-        new CleanWebpackPlugin()
-    ],
     resolve: {
         extensions: ['.ts', '.js']
     },
