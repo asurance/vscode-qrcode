@@ -1,5 +1,6 @@
 declare interface InMessageMap {
-    Update: string;
+    Text: string;
+    Config: Configuration;
 }
 declare interface OutMessageMap {
     Save: string;
@@ -19,3 +20,11 @@ declare interface VSCode<T> {
 }
 declare function acquireVsCodeApi(): VSCode<State>;
 declare module '*.css'
+declare interface Configuration {
+    margin: number;
+    width?: number;
+    color: {
+        dark: string;
+        light: string;
+    };
+}

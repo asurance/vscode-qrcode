@@ -41,6 +41,38 @@
                     "group": "z_commands"
                 }
             ]
+        },
+        "configuration": {
+            "title": "二维码",
+            "properties": {
+                "asurance.vscodeQRCode.margin": {
+                    "type": "number",
+                    "minimum": 0,
+                    "default": 4,
+                    "description": "二维码边缘留白"
+                },
+                "asurance.vscodeQRCode.width": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "minimum": 1,
+                    "default": null,
+                    "description": "二维码显示宽度,空等价于自动选择,太小的宽度会被忽略"
+                },
+                "asurance.vscodeQRCode.color.dark": {
+                    "type": "string",
+                    "pattern": "^#[0-9A-Fa-f]{8}$",
+                    "default": "#000000FF",
+                    "description": "二维码暗区的颜色,应当比亮区暗"
+                },
+                "asurance.vscodeQRCode.color.light": {
+                    "type": "string",
+                    "pattern": "^#[0-9A-Fa-f]{8}$",
+                    "default": "#FFFFFFFF",
+                    "description": "二维码亮区的颜色,应当比暗区亮"
+                }
+            }
         }
     },
     "repository": {
